@@ -1,6 +1,6 @@
 # Terraform & Localstack
 
-## Iniciar los 2 container y correr un exec sobre tf para trabajar ahi:
+## Iniciar los 2 containers y correr un exec sobre tf para trabajar ahi:
 
 ```docker-compose build --no-cache && docker-compose up -d --force-recreate && docker exec -it terraform_test /bin/bash```
 
@@ -81,3 +81,5 @@ En el siguiente enlace se pueden encontrar templates de Terraform:
 2) Si los containers estan con estado START:
 
 ```docker stop localstack && docker stop terraform_test && docker rm localstack && docker rm terraform_test && docker rmi terraform_test:1.0.0 && docker rmi localstack/localstack:latest```
+
+![11](images/11.png)
