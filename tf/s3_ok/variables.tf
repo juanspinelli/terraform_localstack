@@ -1,16 +1,16 @@
 variable "aplicacion" {
   type = string
-  default = "advertising_pads_aml"
+  default = "new_app"
 }
 
 variable "proyecto" {
   type = string
-  default = "pads"
+  default = "tf_localstack"
 }
 
 variable "propietario" {
   type = string
-  default = "CloudController"
+  default = "User"
 }
 
 variable "entorno" {
@@ -20,7 +20,7 @@ variable "entorno" {
 
 variable "pais" {
   type = string
-  default = "MLA"
+  default = "Argentina"
 }
 
 variable "tipo" {
