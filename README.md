@@ -81,3 +81,5 @@ En el siguiente enlace se pueden encontrar templates de Terraform:
 2) Si los containers estan con estado START:
 
 ```docker stop localstack && docker stop terraform_test && docker rm localstack && docker rm terraform_test && docker rmi terraform_test:1.0.0 && docker rmi localstack/localstack:latest```
+
+![11](images/11.png)
