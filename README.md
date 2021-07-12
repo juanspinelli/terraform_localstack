@@ -1,6 +1,6 @@
 # Terraform & Localstack
 
-## Iniciar los 2 container y correr un exec sobre tf para trabajar ahi:
+## Iniciar los 2 containers y correr un exec sobre tf para trabajar ahi:
 
 ```docker-compose build --no-cache && docker-compose up -d --force-recreate && docker exec -it terraform_test /bin/bash```
 
@@ -19,27 +19,38 @@ Luego ya se pueden tirar comando, ej (mismos comandos de cli + endpoint localsta
 
 ![2](images/2.png)
 
-3) En la pestaña con el exec moverse a la carpeta /home, para tener uno de ejemplo deje la carpeta s3_ok ingresar y ejcutar los siguientes comandos de TF
+3) En la pestaña con el exec moverse a la carpeta /home, para tener uno de ejemplo deje la carpeta s3_ok ingresar y ejecutar los siguientes comandos de TF
     - ```terraform init``` (descarga los pluggins necesarios para que funcione el proveedor de AWS)
 
 ![3](images/3.png)
 
 - ```terraform plan -out=mi_plan``` (crea un plan de ejecucion con el paso a paso y todas las cosas que va a crear. El -out se agrega para que cree un archivo con esas configuracion, de esta forma nos aseguramos que cada vez que apliquemos los cambios se ejecute siempre lo mismo)
+
+![10](images/10.png)
+
 - ```terraform apply "mi_plan"``` (Va a crear la infra configurada en el archivo main, en este caso, son 5 buckets con distintos tags, confgs, etc)
 
 ![5](images/5.png)
 
-En este paso se puede ir a la otra solapa y para volver a ejecutar ```aws --endpoint-url=http://localhost:4566 s3 ls``` y ver que los buckets estan creados. 
+En este paso se puede ir a la otra solapa para volver a ejecutar ```aws --endpoint-url=http://localhost:4566 s3 ls``` y ver que los buckets estan creados. 
 
 ![6](images/6.png)
 
-- ```terraform destroy``` (Al momento de hacer el apply se crean archivos con estados donde se guarda la info de lo que se creo, el destro lee ese archivo y destruye solo lo que ahi esta especificado. 
+- ```terraform destroy``` (Al momento de hacer el apply se crean archivos con estados donde se guarda la info de lo que se creo, cambios, etc, el destroy lee ese archivo y destruye solo lo que ahi esta especificado. 
     
 ![7](images/7.png)
     
 Luego del destroy pueden correr nuevamente ```aws --endpoint-url=http://localhost:4566 s3 ls``` para ver que ya los buckets desaparecieron)
 
 ![8](images/8.png)
+
+# A tener en cuenta 
+
+Si van a crear otros servicios es importante que seteen el endpoint al que tiene que ir Terraform.
+En este caso como cree terraform_test y localstack como servicios dentro del mismo docker-compose puedo usar el nombre
+del container como url
+
+![9](images/9.png)
 
 En el siguiente enlace se pueden ver los servicios que se pueden emular con localstack (Version Free):
 
