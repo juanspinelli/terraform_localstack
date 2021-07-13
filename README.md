@@ -56,6 +56,10 @@ En el siguiente enlace se pueden ver los servicios que se pueden emular con loca
 
 ```https://github.com/localstack/localstack```
 
+Si quieren agregar otro servicio de los que brinda Localstack hay que sumarlos en esta linea separados por una coma
+
+![12](images/12.png)
+
 En el siguiente enlace se pueden encontrar templates de Terraform:
 
 ```https://registry.terraform.io/```
